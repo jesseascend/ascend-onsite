@@ -1,0 +1,10 @@
+{
+  "name": "Ascend On-Site Wellness",
+  "commands": {
+    "install": "npm ci",
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "test": "npm run test",
+    "check": "npm run check"
+  }
+}
