@@ -24,6 +24,16 @@ const content: VerticalPageContent = {
   experiences: ['Strength, mobility, and balance', 'Group fitness and active-lifestyle formats', 'Personal training where appropriate', 'Aqua fitness where facilities support it', 'Mind-body and specialty programming', 'Wellness events and education where operationally supported'],
   residentTitle: 'Active adults are not one audience with one ability level.',
   residentCopy: 'Residents may already be highly active, returning to exercise, motivated by social connection, or looking for structured support. Ascend designs for that range—without reducing the community to stereotypes about age or ability.',
+  developmentConsulting: {
+    image: '/community-development.jpg',
+    imageAlt: 'Aerial view of roads and prepared lots in a residential community under development',
+    title: 'Build wellness into the community before opening day.',
+    copy: [
+      'If your active adult or 55+ community is still in development, Ascend can join the planning conversation early. We help teams connect the intended resident experience with the spaces, equipment, programming, staffing, and operating systems needed to support it.',
+      'Early consultation can surface practical questions about room use, storage, flooring, acoustics, circulation, equipment mix, class capacity, and launch sequencing—before plans and purchasing decisions become harder to change.',
+    ],
+    note: 'Ascend provides wellness-program and operational input; licensed design and construction decisions remain with the project’s architects, engineers, and contractors.',
+  },
   faq: [
     { question: 'Do we need to outsource our entire wellness program?', answer: 'No. Ascend can manage a defined recurring component, broader programming, or a more comprehensive operation depending on the responsibilities your community wants to delegate.' },
     { question: 'Can Ascend work with an existing program or instructors?', answer: 'The discovery process begins with your current program. The right approach may preserve strong elements, clarify responsibilities, add support, or redesign parts that no longer fit resident demand.' },

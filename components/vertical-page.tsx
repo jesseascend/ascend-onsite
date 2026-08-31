@@ -29,6 +29,13 @@ export type VerticalPageContent = {
   experiences: string[];
   residentTitle: string;
   residentCopy: string;
+  developmentConsulting?: {
+    image: string;
+    imageAlt: string;
+    title: string;
+    copy: string[];
+    note: string;
+  };
   faq: { question: string; answer: string }[];
   relatedHref: string;
   relatedLabel: string;
@@ -59,6 +66,8 @@ export function VerticalPage({ content }: { content: VerticalPageContent }) {
       <section id="resident-fit" className="resident-fit section-pad"><div className="shell resident-grid resident-grid-reverse"><div className="resident-image"><Image src={content.residentImage} alt={content.residentImageAlt} width={1800} height={content.residentImageHeight} sizes="(max-width: 920px) 100vw, 50vw" /></div><div><p className="eyebrow">Designed for your residents</p><h2>{content.residentTitle}</h2><p>{content.residentCopy}</p></div></div></section>
 
       <section className="process-section section-pad"><div className="shell"><div className="section-heading"><p className="eyebrow">A clear way forward</p><h2>From discovery to ongoing support.</h2></div><ol className="process-grid"><li><span>01</span><h3>Understand</h3><p>We learn about the environment, population, current program, and goals.</p></li><li><span>02</span><h3>Design</h3><p>We recommend an appropriate scope, delivery model, and programming mix.</p></li><li><span>03</span><h3>Install</h3><p>We coordinate the agreed staffing, schedule, systems, and launch details.</p></li><li><span>04</span><h3>Manage</h3><p>We support delivery, communication, quality, and thoughtful adjustments.</p></li></ol></div></section>
+
+      {content.developmentConsulting ? <section className="development-consulting section-pad"><div className="shell development-grid"><div className="development-image"><Image src={content.developmentConsulting.image} alt={content.developmentConsulting.imageAlt} width={2400} height={1800} sizes="(max-width: 920px) 100vw, 50vw" /></div><div className="development-copy"><p className="eyebrow">Planning before opening</p><h2>{content.developmentConsulting.title}</h2>{content.developmentConsulting.copy.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<p className="development-note">{content.developmentConsulting.note}</p><DiscoveryCta id={`cta-discovery-${content.pageId.toLowerCase()}-development`} location="development-consulting" className="button button-light" label="Discuss a community in development" /></div></div></section> : null}
 
       <section className="faq-section section-pad"><div className="shell faq-grid"><div><p className="eyebrow">Questions buyers ask</p><h2>Clear answers before the first conversation.</h2><a className="text-link" href={content.relatedHref}>Explore {content.relatedLabel} <ArrowRight aria-hidden="true" size={18} /></a></div><div>{content.faq.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></div></section>
 
