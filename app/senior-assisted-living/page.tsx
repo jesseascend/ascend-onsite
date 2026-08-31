@@ -13,6 +13,7 @@ const content: VerticalPageContent = {
   lede: 'Ascend helps senior and assisted living communities add reliable, appropriate wellness programming without requiring the activities team to build and manage an entire fitness function internally.',
   image: '/senior-hero.jpg', imageAlt: 'Older adults participating in a seated group exercise class',
   residentImage: '/senior-resident.jpg', residentImageAlt: 'Older residents walking together in a landscaped community park',
+  residentImageHeight: 2700,
   environmentTitle: 'A valuable wellness component should not create another fragile operation.',
   environmentCopy: ['Senior living teams coordinate a wide range of resident experiences. Wellness programming must respect varied mobility and ability levels while also being dependable, engaging, and easy for the facility to support.', 'Ascend can manage a focused recurring program or a broader wellness scope. The objective is professional delivery that fits into your environment—not a clinical service and not a one-size-fits-all fitness plan.'],
   pressures: ['Limited time for activities teams to source and manage instructors', 'Coverage gaps that interrupt recurring programming', 'A wide range of resident mobility and ability levels', 'Uncertainty about the right frequency or program mix', 'The need to add wellness without building an internal fitness team'],

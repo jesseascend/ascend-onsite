@@ -9,6 +9,7 @@
 ## Brand assets
 
 - `public/ascend-logo.png` — exact copy of the supplied `Ascend.png` master.
+- `public/ascend-logo-full.png` — exact copy of the supplied `Ascend Logo - Blue- FULL.png` master; used in the site header and footer.
 - `public/ascend-mark.png` and `public/icon.png` — copies of the supplied `Ascend A Logo - Blue.png` master.
 - `public/og.png` — original generated social-preview artwork created for this build; title and supporting copy were visually verified.
 
@@ -17,8 +18,8 @@
 - `public/active-adult-wellness.jpg` — Pexels photo 21405570, Centre for Ageing Better. Pexels page described it as free to use: https://www.pexels.com/photo/elderly-women-exercising-21405570/
 - `public/senior-wellness.jpg` — Pexels photo 11674389, Centre for Ageing Better. Pexels page described it as free to use: https://www.pexels.com/photo/seniors-exercising-11674389/
 - `public/home-resident-community.jpg` — Pexels photo 32312721. https://www.pexels.com/photo/group-of-elderly-people-enjoying-outdoors-gathering-32312721/
-- `public/active-adult-hero.jpg` — Pexels photo 8972259. https://www.pexels.com/photo/happy-elderly-couple-holding-hands-while-walking-on-the-street-8972259/
-- `public/active-adult-resident.jpg` — Pexels photo 17289959. https://www.pexels.com/photo/elderly-couple-in-park-17289959/
+- `public/active-adult-group-exercise.jpg` — Pexels photo 12086684. https://www.pexels.com/photo/women-dancing-in-the-hall-12086684/
+- `public/active-adult-social-studio.jpg` — Pexels photo 8436549. https://www.pexels.com/photo/elderly-women-holding-yoga-mats-while-having-a-conversation-8436549/
 - `public/senior-hero.jpg` — Pexels photo 12085616. https://www.pexels.com/photo/group-of-elderly-people-exercising-together-12085616/
 - `public/senior-resident.jpg` — Pexels photo 33296778. https://www.pexels.com/photo/seniors-enjoying-a-walk-in-a-bright-green-park-33296778/
 

@@ -21,7 +21,7 @@ export function SiteHeader({ pageId }: { pageId: string }) {
     <header className="site-header">
       <div className="shell header-inner">
         <a className="brand" href="/" aria-label="Ascend On-Site Wellness home" onClick={() => setOpen(false)}>
-          <Image src="/ascend-logo.png" alt="Ascend" width={1800} height={600} priority />
+          <Image src="/ascend-logo-full.png" alt="Ascend" width={1200} height={400} priority unoptimized />
           <span>On-Site Wellness</span>
         </a>
         <nav aria-label="Primary navigation" className="desktop-nav">

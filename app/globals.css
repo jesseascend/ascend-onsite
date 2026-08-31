@@ -29,10 +29,10 @@ a:focus-visible, button:focus-visible { outline: 0.1875rem solid var(--white); b
 .shell { width: min(calc(100% - 2.5rem), var(--content)); margin-inline: auto; }
 
 .site-header { position: sticky; z-index: 20; top: 0; border-bottom: 1px solid rgb(220 232 242 / 0.88); background: rgb(255 255 255 / 0.94); backdrop-filter: blur(1rem); }
-.header-inner { min-height: 6.75rem; display: flex; align-items: center; gap: 1.5rem; }
-.brand { display: inline-flex; align-items: center; gap: 0.8rem; margin-right: auto; }
-.brand img { width: 17.4rem; height: auto; }
-.brand span { border-left: 1px solid var(--line); padding-left: 0.8rem; color: var(--navy); font-size: 0.75rem; font-weight: 700; line-height: 1.2; letter-spacing: 0.08em; text-transform: uppercase; max-width: 5rem; }
+.header-inner { min-height: 7.25rem; display: flex; align-items: center; gap: 1.5rem; }
+.brand { display: inline-grid; justify-items: start; gap: 0.05rem; margin-right: auto; }
+.brand img { display: block; width: 16.5rem; height: auto; }
+.brand span { margin: -0.35rem 0 0 3.2rem; color: var(--navy); font-size: 0.72rem; font-weight: 800; line-height: 1.2; letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap; }
 .desktop-nav { display: flex; align-items: center; gap: 1.65rem; color: var(--gray); font-size: 0.92rem; font-weight: 650; }
 .desktop-nav a { padding-block: 0.7rem; }
 .desktop-nav a:hover { color: var(--navy); }
@@ -169,7 +169,9 @@ h3 { font-size: clamp(1.45rem, 2vw, 2rem); font-weight: 700; }
 
 .site-footer { background: #061f41; color: var(--white); padding-top: 5rem; }
 .footer-grid { display: grid; grid-template-columns: 1.55fr repeat(3, 1fr); gap: 3rem; }
-.footer-brand img { width: 9rem; height: auto; filter: brightness(0) invert(1); }
+.footer-brand { justify-self: start; text-align: left; }
+.footer-brand img { display: block; width: 13rem; height: auto; margin: 0; border-radius: 0.35rem; }
+.footer-brand p { max-width: 20rem; margin: 1.25rem 0 0; }
 .footer-brand p, .site-footer p, .site-footer li { color: #bacde1; }
 .footer-heading { margin-bottom: 1.2rem; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
 .site-footer ul { display: grid; gap: 0.7rem; margin: 0; padding: 0; list-style: none; }
@@ -282,7 +284,9 @@ input:focus, select:focus, textarea:focus { border-color: var(--medium-blue); ou
 }
 
 @media (max-width: 1100px) and (min-width: 921px) {
-  .brand span { display: none; }
+  .header-inner { gap: 1rem; }
+  .brand img { width: 14.75rem; }
+  .brand span { margin-left: 2.85rem; font-size: 0.66rem; }
   .desktop-nav { gap: 1rem; }
 }
 
@@ -292,6 +296,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--medium-blue); ou
   .site-header .mobile-nav .button { display: inline-flex; margin-top: 0.5rem; }
   .header-inner { min-height: 4.75rem; }
   .brand img { width: 13rem; }
+  .brand span { margin-left: 2.5rem; font-size: 0.6rem; }
   .hero-grid { padding-block: 4rem; }
   h1 { font-size: clamp(3rem, 14vw, 4.3rem); }
   .hero-visual { min-height: 24rem; }

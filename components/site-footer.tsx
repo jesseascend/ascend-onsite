@@ -3,10 +3,10 @@ import { routes, site } from '@/lib/site';
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer">
+    <footer id="site-footer" className="site-footer">
       <div className="shell footer-grid">
         <div className="footer-brand">
-          <Image src="/ascend-logo.png" alt="Ascend" width={1800} height={600} />
+          <Image src="/ascend-logo-full.png" alt="Ascend" width={1200} height={400} unoptimized />
           <p>Professionally managed on-site wellness programs for communities and facilities.</p>
         </div>
         <div>
