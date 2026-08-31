@@ -12,6 +12,7 @@
 - `public/ascend-logo-full.png` — exact copy of the supplied transparent `Ascend Logo - Blue- FULL.png` master; used in the site header.
 - `public/ascend-logo-white-full.png` — exact copy of the supplied transparent `Ascend Logo - White- FULL.png` master; used in the site footer.
 - `public/ascend-mark.png` and `public/icon.png` — copies of the supplied `Ascend A Logo - Blue.png` master.
+- `public/about-coaching.jpg` — copy of the supplied `A7_01918.jpg`, used in the About story section.
 - `public/og.png` — original generated social-preview artwork created for this build; title and supporting copy were visually verified.
 
 ## Stock image candidates
