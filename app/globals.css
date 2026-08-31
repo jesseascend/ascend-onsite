@@ -143,6 +143,7 @@ h3 { font-size: clamp(1.45rem, 2vw, 2rem); font-weight: 700; }
 .resident-image { overflow: hidden; border-radius: var(--radius-lg); background: var(--mist); }
 .resident-image img { display: block; width: 100%; min-height: 31rem; object-fit: cover; }
 .resident-grid > div:last-child > p:not(.eyebrow) { color: var(--gray); font-size: 1.08rem; }
+.about-story-copy > h2 + p { margin-top: 1.15rem; }
 .about-story-copy > p + p { margin-top: 1.15rem; }
 .resident-points { display: grid; gap: 0.8rem; margin-top: 2rem; }
 .resident-points span { display: flex; align-items: center; gap: 0.75rem; color: var(--navy); font-weight: 700; }
