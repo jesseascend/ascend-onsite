@@ -33,6 +33,7 @@ if (!source.includes('data-cta-key="discovery-call"')) errors.push('Shared Disco
 if (!source.includes('/schedule-a-discovery-call/')) errors.push('Valid Discovery Call route is missing.');
 if (!source.includes('robots(): MetadataRoute.Robots')) errors.push('Robots metadata route is missing.');
 if (!source.includes('sitemap(): MetadataRoute.Sitemap')) errors.push('Sitemap metadata route is missing.');
+if (source.includes("from 'next/link'")) errors.push('Client-routed Next links remain; use standard anchors for deployment-safe navigation.');
 
 const idMatches = [...source.matchAll(/id="(cta-discovery-[^"]+)"/g)].map((match) => match[1]);
 const duplicates = idMatches.filter((id, index) => idMatches.indexOf(id) !== index);

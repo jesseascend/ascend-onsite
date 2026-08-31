@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 import { DiscoveryCta } from '@/components/discovery-cta';
 import { FinalCta } from '@/components/final-cta';
@@ -12,6 +11,8 @@ export type VerticalPageContent = {
   lede: string;
   image: string;
   imageAlt: string;
+  residentImage: string;
+  residentImageAlt: string;
   environmentTitle: string;
   environmentCopy: string[];
   pressures: string[];
@@ -47,11 +48,11 @@ export function VerticalPage({ content }: { content: VerticalPageContent }) {
 
       <section className="flexibility-banner"><div className="shell flexibility-inner"><div><p className="eyebrow">Focused or comprehensive</p><h2>Use Ascend for the level of support you need.</h2></div><p>A focused recurring program can be the right answer. So can a broader managed wellness operation. We shape the agreed scope around your facility instead of forcing a rigid package.</p></div></section>
 
-      <section className="resident-fit section-pad"><div className="shell resident-grid resident-grid-reverse"><div className="resident-image"><Image src={content.image} alt="" width={1800} height={1200} sizes="(max-width: 920px) 100vw, 50vw" /></div><div><p className="eyebrow">Designed for your residents</p><h2>{content.residentTitle}</h2><p>{content.residentCopy}</p></div></div></section>
+      <section className="resident-fit section-pad"><div className="shell resident-grid resident-grid-reverse"><div className="resident-image"><Image src={content.residentImage} alt={content.residentImageAlt} width={1800} height={2700} sizes="(max-width: 920px) 100vw, 50vw" /></div><div><p className="eyebrow">Designed for your residents</p><h2>{content.residentTitle}</h2><p>{content.residentCopy}</p></div></div></section>
 
       <section className="process-section section-pad"><div className="shell"><div className="section-heading"><p className="eyebrow">A clear way forward</p><h2>From discovery to ongoing support.</h2></div><ol className="process-grid"><li><span>01</span><h3>Understand</h3><p>We learn about the environment, population, current program, and goals.</p></li><li><span>02</span><h3>Design</h3><p>We recommend an appropriate scope, delivery model, and programming mix.</p></li><li><span>03</span><h3>Install</h3><p>We coordinate the agreed staffing, schedule, systems, and launch details.</p></li><li><span>04</span><h3>Manage</h3><p>We support delivery, communication, quality, and thoughtful adjustments.</p></li></ol></div></section>
 
-      <section className="faq-section section-pad"><div className="shell faq-grid"><div><p className="eyebrow">Questions buyers ask</p><h2>Clear answers before the first conversation.</h2><Link className="text-link" href={content.relatedHref}>Explore {content.relatedLabel} <ArrowRight aria-hidden="true" size={18} /></Link></div><div>{content.faq.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></div></section>
+      <section className="faq-section section-pad"><div className="shell faq-grid"><div><p className="eyebrow">Questions buyers ask</p><h2>Clear answers before the first conversation.</h2><a className="text-link" href={content.relatedHref}>Explore {content.relatedLabel} <ArrowRight aria-hidden="true" size={18} /></a></div><div>{content.faq.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></div></section>
 
       <FinalCta pageId={content.pageId} heading={content.finalHeading} copy={content.finalCopy} />
     </SiteShell>

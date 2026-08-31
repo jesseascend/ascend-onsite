@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { ArrowRight, CalendarCheck, ChartNoAxesColumnIncreasing, HeartHandshake, RefreshCw, ShieldCheck, UsersRound } from 'lucide-react';
 import { DiscoveryCta } from '@/components/discovery-cta';
 import { FinalCta } from '@/components/final-cta';
@@ -47,7 +46,7 @@ export default function Home() {
             <p className="hero-lede">Ascend designs, assembles, and manages on-site wellness programs around your facility, your residents, and the level of support your organization actually needs.</p>
             <div className="hero-actions">
               <DiscoveryCta id="cta-discovery-a-home-hero" location="hero" />
-              <Link className="text-link" href="#who-we-serve">Explore who we serve <ArrowRight aria-hidden="true" size={18} /></Link>
+              <a className="text-link" href="#who-we-serve">Explore who we serve <ArrowRight aria-hidden="true" size={18} /></a>
             </div>
           </div>
           <div className="hero-visual" aria-label="A calm, professional wellness program built around community needs">
@@ -74,11 +73,11 @@ export default function Home() {
         <div className="shell">
           <div className="section-heading"><p className="eyebrow">Built for your environment</p><h2>We understand the organization—and the people it serves.</h2></div>
           <div className="vertical-grid">
-            {verticals.map((vertical, index) => (
-              <Link className="vertical-card vertical-card-image" href={vertical.href} key={vertical.href}>
+            {verticals.map((vertical) => (
+              <a className="vertical-card vertical-card-image" href={vertical.href} key={vertical.href}>
                 <Image src={vertical.image} alt={vertical.alt} width={1800} height={1200} sizes="(max-width: 680px) 100vw, 50vw" />
-                <div className="vertical-card-body"><span className="vertical-number">0{index + 1}</span><h3>{vertical.title}</h3><p>{vertical.copy}</p><span className="card-link">Explore this approach <ArrowRight aria-hidden="true" size={18} /></span></div>
-              </Link>
+                <div className="vertical-card-body"><h3>{vertical.title}</h3><p>{vertical.copy}</p><span className="card-link">Explore this approach <ArrowRight aria-hidden="true" size={18} /></span></div>
+              </a>
             ))}
           </div>
         </div>
@@ -109,7 +108,7 @@ export default function Home() {
 
       <section className="resident-section section-pad">
         <div className="shell resident-grid">
-          <div className="resident-image"><Image src="/active-adult-wellness.jpg" alt="Active older adults taking part in a social movement class" width={1800} height={1202} sizes="(max-width: 920px) 100vw, 50vw" /></div>
+          <div className="resident-image"><Image src="/home-resident-community.jpg" alt="Older residents gathering together outdoors" width={1800} height={2700} sizes="(max-width: 920px) 100vw, 50vw" /></div>
           <div><p className="eyebrow">Your residents at the center</p><h2>A program that fits the people who actually use it.</h2><p>Appropriate wellness begins with understanding the population—not simply filling a calendar. Ascend considers ability levels, interests, participation patterns, social connection, facility context, and the experience your organization wants residents to have.</p><div className="resident-points"><span><HeartHandshake aria-hidden="true" /> Belonging and connection</span><span><UsersRound aria-hidden="true" /> Variety and appropriate challenge</span></div></div>
         </div>
       </section>
@@ -119,7 +118,7 @@ export default function Home() {
       </section>
 
       <section className="proof-section section-pad">
-        <div className="shell proof-grid"><div><p className="eyebrow">Operating experience, brought on-site</p><h2>Built from approximately a decade of hands-on fitness operations.</h2></div><div><p>Ascend has refined its fitness operation in Lake Mary, Florida for approximately 10 years. Ascend On-Site Wellness brings that operating experience into client communities and facilities as an on-site amenity.</p><p>At launch, our authority rests on process, standards, operational specificity, and the discipline to build each program around its setting—not on invented logos, testimonials, or claims.</p><Link className="text-link" href="/about/">Learn about Ascend <ArrowRight aria-hidden="true" size={18} /></Link></div></div>
+        <div className="shell proof-grid"><div><p className="eyebrow">Operating experience, brought on-site</p><h2>Built from approximately a decade of hands-on fitness operations.</h2></div><div><p>Ascend has refined its fitness operation in Lake Mary, Florida for approximately 10 years. Ascend On-Site Wellness brings that operating experience into client communities and facilities as an on-site amenity.</p><p>At launch, our authority rests on process, standards, operational specificity, and the discipline to build each program around its setting—not on invented logos, testimonials, or claims.</p><a className="text-link" href="/about/">Learn about Ascend <ArrowRight aria-hidden="true" size={18} /></a></div></div>
       </section>
 
       <FinalCta pageId="A-HOME" heading="Let’s talk about what wellness could look like in your community." copy="We’ll start with your environment, your residents, your current program, and the level of support that would be most useful." />

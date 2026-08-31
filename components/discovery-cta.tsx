@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { site } from '@/lib/site';
 
 type DiscoveryCtaProps = {
@@ -10,7 +9,7 @@ type DiscoveryCtaProps = {
 
 export function DiscoveryCta({ id, location, className = 'button', label = 'Schedule a Discovery Call' }: DiscoveryCtaProps) {
   return (
-    <Link
+    <a
       id={id}
       className={className}
       data-cta-key="discovery-call"
@@ -18,6 +17,6 @@ export function DiscoveryCta({ id, location, className = 'button', label = 'Sche
       href={site.discoveryRoute}
     >
       {label}
-    </Link>
+    </a>
   );
 }
