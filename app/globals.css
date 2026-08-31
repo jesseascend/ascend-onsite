@@ -174,7 +174,7 @@ h3 { font-size: clamp(1.45rem, 2vw, 2rem); font-weight: 700; }
 .footer-brand p { max-width: 20rem; margin: 1.25rem 0 0; }
 .footer-brand p, .site-footer p, .site-footer li { color: #bacde1; }
 .footer-heading { margin-bottom: 1.2rem; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
-.footer-company { padding-top: 2.45rem; }
+.footer-company { padding-top: 0; }
 .site-footer ul { display: grid; gap: 0.7rem; margin: 0; padding: 0; list-style: none; }
 .site-footer a:hover { color: var(--turquoise); }
 .footer-small { font-size: 0.86rem; }

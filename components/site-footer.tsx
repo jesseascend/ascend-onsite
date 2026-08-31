@@ -13,11 +13,12 @@ export function SiteFooter() {
           <h2 className="footer-heading">Who we serve</h2>
           <ul>{routes.slice(0, 2).map((route) => <li key={route.href}><a href={route.href}>{route.label}</a></li>)}</ul>
         </div>
-        <nav className="footer-company" aria-label="Company links">
+        <nav className="footer-company" aria-labelledby="footer-contact-heading">
+          <h2 id="footer-contact-heading" className="footer-heading">Contact Us</h2>
           <ul>
-            <li><a href="/about/">About</a></li>
             <li><a href={site.discoveryRoute}>Schedule a Discovery Call</a></li>
             <li><a href={`mailto:${site.publicEmail}`}>{site.publicEmail}</a></li>
+            <li><a href="/about/">About Ascend</a></li>
           </ul>
         </nav>
         <div>
