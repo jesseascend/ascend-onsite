@@ -25,7 +25,7 @@ async function collect(dir) {
 const sourceFiles = [...await collect(join(root, 'app')), ...await collect(join(root, 'components')), ...await collect(join(root, 'lib'))];
 const source = (await Promise.all(sourceFiles.map((file) => readFile(file, 'utf8')))).join('\n');
 
-for (const phrase of ['Get Pricing', 'Buy Now', 'Purchase Membership', 'nationwide coverage']) {
+for (const phrase of ['Get Pricing', 'Buy Now', 'Purchase Membership', 'nationwide coverage', 'neurological preservation']) {
   if (source.includes(phrase)) errors.push(`Prohibited production phrase found: ${phrase}`);
 }
 

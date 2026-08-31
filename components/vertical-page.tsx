@@ -16,6 +16,11 @@ export type VerticalPageContent = {
   residentImageHeight: number;
   environmentTitle: string;
   environmentCopy: string[];
+  populationContext?: {
+    title: string;
+    copy: string;
+    segments: { title: string; emphasis: string; copy: string }[];
+  };
   pressures: string[];
   outcomes: string[];
   solutionTitle: string;
@@ -42,6 +47,8 @@ export function VerticalPage({ content }: { content: VerticalPageContent }) {
       </section>
 
       <section className="environment-section section-pad"><div className="shell editorial-grid"><div><p className="eyebrow">We understand your environment</p><h2>{content.environmentTitle}</h2></div><div className="editorial-copy">{content.environmentCopy.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></div></section>
+
+      {content.populationContext ? <section id="living-settings" className="population-section section-pad"><div className="shell"><div className="section-heading population-heading"><p className="eyebrow">Different settings, distinct priorities</p><h2>{content.populationContext.title}</h2><p>{content.populationContext.copy}</p></div><div className="population-grid">{content.populationContext.segments.map((segment) => <article className="population-card" key={segment.title}><span>{segment.emphasis}</span><h3>{segment.title}</h3><p>{segment.copy}</p></article>)}</div></div></section> : null}
 
       <section className="pressure-outcome section-pad"><div className="shell two-column-cards"><article className="list-panel"><span className="panel-label">What makes it difficult</span><h2>The operational pressure</h2><ul>{content.pressures.map((item) => <li key={item}><Check aria-hidden="true" />{item}</li>)}</ul></article><article className="list-panel list-panel-blue"><span className="panel-label">What good looks like</span><h2>A dependable future state</h2><ul>{content.outcomes.map((item) => <li key={item}><Check aria-hidden="true" />{item}</li>)}</ul></article></div></section>
 

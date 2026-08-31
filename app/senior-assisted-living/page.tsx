@@ -16,6 +16,15 @@ const content: VerticalPageContent = {
   residentImageHeight: 2700,
   environmentTitle: 'A valuable wellness component should not create another fragile operation.',
   environmentCopy: ['Senior living teams coordinate a wide range of resident experiences. Wellness programming must respect varied mobility and ability levels while also being dependable, engaging, and easy for the facility to support.', 'Ascend can manage a focused recurring program or a broader wellness scope. The objective is professional delivery that fits into your environment—not a clinical service and not a one-size-fits-all fitness plan.'],
+  populationContext: {
+    title: 'One senior-living category does not mean one program.',
+    copy: 'Independent living, assisted living, and memory care may sit within one organization while calling for different experiences, instructor capabilities, and levels of facility coordination.',
+    segments: [
+      { title: 'Independent Living', emphasis: 'Broader choice and progression', copy: 'Multiple group-exercise formats, strength, mobility, balance, specialty classes, and personal training where appropriate—designed for variety, challenge, and social connection.' },
+      { title: 'Assisted Living', emphasis: 'Accessible strength and function', copy: 'Supported strength, balance, mobility, and everyday movement patterns, with clear modifications, smaller groups where useful, and close coordination with facility guidance.' },
+      { title: 'Memory Care', emphasis: 'Calm, repeatable engagement', copy: 'Simple, familiar movement patterns; consistent cues; rhythm; balance; and social participation delivered in a predictable format appropriate to the setting. Programming remains non-clinical and coordinated with facility guidance.' },
+    ],
+  },
   pressures: ['Limited time for activities teams to source and manage instructors', 'Coverage gaps that interrupt recurring programming', 'A wide range of resident mobility and ability levels', 'Uncertainty about the right frequency or program mix', 'The need to add wellness without building an internal fitness team'],
   outcomes: ['Dependable, professionally delivered programming', 'A scope that complements existing activities and staff', 'Appropriate options for varied resident populations', 'Clear responsibility for staffing and coordination', 'An engaging wellness component that integrates into the facility'],
   solutionTitle: 'Appropriate programming, professionally assembled and supported.',
