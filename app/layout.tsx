@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     title: 'Ascend On-Site Wellness',
     description: 'Professionally managed wellness programs for communities and facilities.',
     url: site.productionOrigin,
-    images: [{ url: '/og.png', width: 1734, height: 907, alt: 'Ascend On-Site Wellness' }],
+    images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'Ascend On-Site Wellness' }],
   },
-  twitter: { card: 'summary_large_image', title: 'Ascend On-Site Wellness', description: 'Professionally managed wellness programs for communities and facilities.', images: ['/og.png'] },
+  twitter: { card: 'summary_large_image', title: 'Ascend On-Site Wellness', description: 'Professionally managed wellness programs for communities and facilities.', images: ['/og.jpg'] },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
