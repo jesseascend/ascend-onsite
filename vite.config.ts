@@ -29,7 +29,9 @@ process.env.MINIFLARE_REGISTRY_PATH ??= '.wrangler/registry';
 
 const localBindingConfig = {
   main: 'vinext/server/fetch-handler',
-  compatibility_flags: ['nodejs_compat'],
+  // compatibility_flags intentionally omitted here -- wrangler.jsonc
+  // already declares nodejs_compat, and merging both makes Miniflare
+  // reject the config as a duplicate flag.
   d1_databases: d1
     ? [
         {
