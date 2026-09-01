@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sites-project",
+  "account_id": "a35fb6441b32418f9f01dc6e0cab7796",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "main": "vinext/server/fetch-handler",
+  "assets": {
+    "directory": "dist/client",
+    "not_found_handling": "none",
+    "binding": "ASSETS"
+  },
+  "cache": {
+    "enabled": true
+  },
+  "routes": [
+    { "pattern": "ascendonsite.com", "custom_domain": true },
+    { "pattern": "www.ascendonsite.com", "custom_domain": true }
+  ]
+}
