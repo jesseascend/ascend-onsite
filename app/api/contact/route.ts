@@ -1,4 +1,5 @@
 import { env } from 'cloudflare:workers';
+import { submitToAirtable } from '@/lib/airtable';
 
 // Human-readable labels for the fields either form on the site may submit.
 // Route stays generic on purpose: adding a field to a form doesn't require
@@ -54,11 +55,13 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, error: 'Name and email are required.' }, { status: 400 });
   }
 
+  const fields: Record<string, string> = {};
   const rows: [string, string][] = [];
   for (const [key, value] of data.entries()) {
     if (key === 'formType' || key === HONEYPOT_FIELD) continue;
     const stringValue = asString(value);
     if (!stringValue) continue;
+    fields[key] = stringValue;
     rows.push([FIELD_LABELS[key] ?? key, stringValue]);
   }
 
@@ -68,17 +71,32 @@ export async function POST(request: Request) {
     .map(([label, value]) => `<tr><td style="padding:4px 12px 4px 0;font-weight:600;vertical-align:top;">${label}</td><td>${value}</td></tr>`)
     .join('')}</table>`;
 
-  try {
-    await env.EMAIL.send({
+  // Send the email notification and create the Airtable record in parallel.
+  // Either channel reaching the business counts as success; a failure in one
+  // is logged, not surfaced, so a temporary outage in one doesn't block a
+  // submission the other channel handled fine.
+  const [emailResult, airtableResult] = await Promise.allSettled([
+    env.EMAIL.send({
       to: 'info@ascendonsite.com',
       from: { email: 'noreply@ascendonsite.com', name: 'Ascend On-Site Wellness Website' },
       replyTo: email,
       subject: `${subject} from ${name}`,
       text,
       html,
-    });
-  } catch (error) {
-    console.error('Email send failed', error);
+    }),
+    submitToAirtable(formType, fields),
+  ]);
+
+  const emailOk = emailResult.status === 'fulfilled';
+  if (!emailOk) console.error('Email send failed', emailResult.reason);
+
+  const airtableOk = airtableResult.status === 'fulfilled' && airtableResult.value.ok;
+  if (!airtableOk) {
+    const reason = airtableResult.status === 'fulfilled' ? airtableResult.value : airtableResult.reason;
+    console.error('Airtable submission failed', reason);
+  }
+
+  if (!emailOk && !airtableOk) {
     return Response.json(
       { ok: false, error: 'We could not send your message. Please email info@ascendonsite.com directly.' },
       { status: 502 },
