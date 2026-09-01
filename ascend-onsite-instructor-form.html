@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ascend On-Site Wellness — Join Our Instructor Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white: #FFFFFF;
+    --cream-bg: #F5F3F0;
+    --field-bg: #FAFAF9;
+    --field-border: #E5E5E5;
+    --ink: #000000;
+    --ink-secondary: #545454;
+    --light-blue: #BEDBF4;
+    --ascend-blue: #5FACF7;
+    --medium-blue: #1054AD;
+    --navy: #0C3974;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    font-family:'Manrope', sans-serif;
+    color:var(--ink-secondary);
+    background:var(--cream-bg);
+  }
+
+  /* --- Launcher (stand-in for wherever this lives on the page) --- */
+  .launcher-wrap{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+  }
+  .launcher-btn{
+    font-family:'Manrope', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.01em;
+    color:#fff;
+    background:var(--navy);
+    border:none;
+    border-radius:8px;
+    padding:16px 32px;
+    cursor:pointer;
+    transition:background 0.15s ease, transform 0.1s ease;
+  }
+  .launcher-btn:hover{ background:#082A5B; }
+  .launcher-btn:active{ transform:scale(0.98); }
+
+  /* --- Overlay + modal --- */
+  .overlay{
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.4);
+    display:none;
+    align-items:flex-start;
+    justify-content:center;
+    padding:5vh 16px;
+    overflow-y:auto;
+    z-index:1000;
+  }
+  .overlay.open{ display:flex; }
+
+  .modal{
+    background:var(--white);
+    width:100%;
+    max-width:680px;
+    border-radius:12px;
+    padding:48px 48px 40px;
+    position:relative;
+    box-shadow:0 20px 40px rgba(0,0,0,0.12);
+  }
+  @media (max-width:600px){
+    .modal{ padding:32px 24px 28px; border-radius:12px; }
+  }
+
+  .modal-close{
+    position:absolute;
+    top:20px; right:20px;
+    width:32px; height:32px;
+    border-radius:50%;
+    border:none;
+    background:transparent;
+    color:var(--ink-secondary);
+    font-size:20px;
+    line-height:1;
+    cursor:pointer;
+    transition:background 0.15s ease;
+  }
+  .modal-close:hover{ background:var(--light-blue); }
+
+  .modal-eyebrow{
+    font-size:12px;
+    color:var(--ascend-blue);
+    font-weight:600;
+    margin:0 0 8px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  .modal-title{
+    font-weight:700;
+    font-size:32px;
+    line-height:1.2;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  .modal-sub{
+    font-size:15px;
+    color:var(--ink-secondary);
+    margin:0 0 32px;
+    max-width:52ch;
+    line-height:1.6;
+  }
+
+  form{ display:flex; flex-direction:column; gap:24px; }
+
+  .row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  @media (max-width:560px){
+    .row{ grid-template-columns:1fr; }
+  }
+
+  label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:8px;
+    color:var(--ink);
+  }
+
+  input[type=text], input[type=email], input[type=tel], input[type=number], select, textarea{
+    width:100%;
+    font-family:'Manrope', sans-serif;
+    font-size:14px;
+    color:var(--ink);
+    background:var(--field-bg);
+    border:1px solid var(--field-border);
+    border-radius:8px;
+    padding:12px 14px;
+    outline:none;
+    transition:border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    appearance:none;
+  }
+  input::placeholder{ color:#AAAAAA; }
+  input:focus, select:focus, textarea:focus{
+    border-color:var(--ascend-blue);
+    background:var(--white);
+    box-shadow:0 0 0 3px rgba(95,172,247,0.1);
+  }
+
+  select{
+    background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='%23545454' d='M5.5 7.5l4.5 5 4.5-5z'/%3e%3c/svg%3e");
+    background-repeat:no-repeat;
+    background-position:right 12px center;
+    padding-right:40px;
+  }
+  select:invalid{ color:#AAAAAA; }
+
+  textarea{
+    resize:vertical;
+  }
+
+  .pill-group{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .pill{
+    font-family:'Manrope', sans-serif;
+    font-size:13px;
+    font-weight:500;
+    color:var(--ink-secondary);
+    background:var(--field-bg);
+    border:1px solid var(--field-border);
+    border-radius:20px;
+    padding:10px 16px;
+    cursor:pointer;
+    transition:all 0.12s ease;
+    user-select:none;
+  }
+  .pill:hover{
+    border-color:var(--ascend-blue);
+    background:rgba(95,172,247,0.05);
+  }
+  .pill.selected{
+    background:var(--ascend-blue);
+    border-color:var(--ascend-blue);
+    color:var(--white);
+  }
+
+  .checkbox-group{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .checkbox-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .checkbox-item input[type=checkbox]{
+    width:18px;
+    height:18px;
+    cursor:pointer;
+    accent-color:var(--navy);
+  }
+  .checkbox-item label{
+    margin:0;
+    cursor:pointer;
+    font-weight:400;
+  }
+
+  .submit-row{
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .submit-btn{
+    font-family:'Manrope', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    color:#fff;
+    background:var(--navy);
+    border:none;
+    border-radius:8px;
+    padding:14px 28px;
+    cursor:pointer;
+    transition:background 0.15s ease, opacity 0.15s ease;
+  }
+  .submit-btn:hover{ background:#082A5B; }
+  .submit-btn:disabled{ opacity:0.6; cursor:default; }
+
+  .form-status{
+    font-size:13px;
+    color:var(--ink-secondary);
+  }
+  .form-status.error{ color:#C84C31; }
+  .form-status.success{ color:var(--navy); font-weight:600; }
+
+  .success-panel{
+    text-align:center;
+    padding:24px 0 12px;
+  }
+  .success-panel h3{
+    font-size:28px;
+    font-weight:700;
+    margin:0 0 10px;
+    color:var(--ink);
+  }
+  .success-panel p{
+    color:var(--ink-secondary);
+    font-size:15px;
+    margin:0;
+    line-height:1.6;
+  }
+</style>
+</head>
+<body>
+
+  <div class="launcher-wrap">
+    <button class="launcher-btn" id="openModalBtn">Instructor Application</button>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <button class="modal-close" id="closeModalBtn" aria-label="Close">&times;</button>
+
+      <div id="formPanel">
+        <p class="modal-eyebrow">Ascend On-Site Wellness</p>
+        <h2 class="modal-title">Become part of our professional network</h2>
+        <p class="modal-sub">We're looking for experienced, professional instructors to deliver wellness programming at our partner facilities.</p>
+
+        <form id="instructorForm">
+          <div class="row">
+            <div>
+              <label for="fldName">Full name</label>
+              <input type="text" id="fldName" name="Full Name" required />
+            </div>
+            <div>
+              <label for="fldEmail">Email</label>
+              <input type="email" id="fldEmail" name="Email" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="fldPhone">Phone</label>
+              <input type="tel" id="fldPhone" name="Phone" />
+            </div>
+            <div>
+              <label for="fldCity">City</label>
+              <input type="text" id="fldCity" name="City" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="fldZip">ZIP code</label>
+              <input type="text" id="fldZip" name="ZIP Code" />
+            </div>
+            <div>
+              <label for="fldRadius">Travel radius (miles)</label>
+              <input type="number" id="fldRadius" name="Travel Radius" />
+            </div>
+          </div>
+
+          <div>
+            <label>Disciplines</label>
+            <div class="pill-group" id="disciplineGroup">
+              <button type="button" class="pill" data-value="Yoga">Yoga</button>
+              <button type="button" class="pill" data-value="Personal Training">Personal Training</button>
+              <button type="button" class="pill" data-value="Group Fitness">Group Fitness</button>
+              <button type="button" class="pill" data-value="Pilates">Pilates</button>
+              <button type="button" class="pill" data-value="Aqua Fitness">Aqua Fitness</button>
+              <button type="button" class="pill" data-value="Senior Fitness">Senior Fitness</button>
+              <button type="button" class="pill" data-value="Chair Fitness">Chair Fitness</button>
+              <button type="button" class="pill" data-value="Mobility">Mobility</button>
+              <button type="button" class="pill" data-value="Barre">Barre</button>
+              <button type="button" class="pill" data-value="Tai Chi">Tai Chi</button>
+              <button type="button" class="pill" data-value="Dance Fitness">Dance Fitness</button>
+            </div>
+          </div>
+
+          <div>
+            <label for="fldCertifications">Certifications</label>
+            <textarea id="fldCertifications" name="Certifications" rows="3" placeholder="List your relevant fitness/wellness certifications"></textarea>
+          </div>
+
+          <div>
+            <label>CPR / AED status</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="cprYes" name="CPR_AED" value="Yes" />
+                <label for="cprYes">Yes</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="cprNo" name="CPR_AED" value="No" />
+                <label for="cprNo">No</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="cprInProgress" name="CPR_AED" value="In Progress" />
+                <label for="cprInProgress">In Progress</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="fldExperience">Years of experience</label>
+              <input type="number" id="fldExperience" name="Years of Experience" />
+            </div>
+            <div>
+              <label for="fldRate">Preferred rate ($/hour)</label>
+              <input type="number" id="fldRate" name="Preferred Rate" step="0.01" />
+            </div>
+          </div>
+
+          <div>
+            <label for="fldAvailability">Availability</label>
+            <textarea id="fldAvailability" name="Availability" rows="3" placeholder="Describe your availability (e.g., weekday mornings, weekends, etc.)"></textarea>
+          </div>
+
+          <div>
+            <label for="fldAdditional">Additional information</label>
+            <textarea id="fldAdditional" name="Additional Information" rows="3" placeholder="Tell us anything else we should know about your experience or approach"></textarea>
+          </div>
+
+          <div class="submit-row">
+            <button type="submit" class="submit-btn" id="submitBtn">Submit Application</button>
+            <span class="form-status" id="formStatus"></span>
+          </div>
+        </form>
+      </div>
+
+      <div class="success-panel" id="successPanel" style="display:none;">
+        <h3>Thanks for applying</h3>
+        <p>We've received your application and will review your background. We'll be in touch if your profile is a good fit.</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // ------------------------------------------------------------------
+  // Airtable submission config
+  // ------------------------------------------------------------------
+  // Fill these in with your own values:
+  //   AIRTABLE_TOKEN: a Personal Access Token scoped to ONLY the
+  //     "On-Site" base, with ONLY data.records:write permission.
+  //     https://airtable.com/create/tokens
+  //   BASE_ID: your On-Site base ID
+  //   TABLE_ID: your Instructors table ID
+  const AIRTABLE_TOKEN = "PASTE_YOUR_SCOPED_AIRTABLE_TOKEN_HERE";
+  const BASE_ID = "app4rYzpkUqKmCpv9";
+  const TABLE_ID = "tblAdzkqEDTWjAfUH";
+
+  const overlay = document.getElementById('overlay');
+  const openBtn = document.getElementById('openModalBtn');
+  const closeBtn = document.getElementById('closeModalBtn');
+  const form = document.getElementById('instructorForm');
+  const statusEl = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('submitBtn');
+  const formPanel = document.getElementById('formPanel');
+  const successPanel = document.getElementById('successPanel');
+  const disciplineGroup = document.getElementById('disciplineGroup');
+
+  const selectedDisciplines = new Set();
+  let selectedCprStatus = '';
+
+  openBtn.addEventListener('click', () => overlay.classList.add('open'));
+  closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.classList.remove('open');
+  });
+
+  disciplineGroup.addEventListener('click', (e) => {
+    const pill = e.target.closest('.pill');
+    if (!pill) return;
+    const val = pill.dataset.value;
+    if (selectedDisciplines.has(val)) {
+      selectedDisciplines.delete(val);
+      pill.classList.remove('selected');
+    } else {
+      selectedDisciplines.add(val);
+      pill.classList.add('selected');
+    }
+  });
+
+  document.querySelectorAll('input[name="CPR_AED"]').forEach(checkbox => {
+    checkbox.addEventListener('change', (e) => {
+      document.querySelectorAll('input[name="CPR_AED"]').forEach(cb => cb.checked = false);
+      e.target.checked = true;
+      selectedCprStatus = e.target.value;
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.textContent = '';
+    statusEl.className = 'form-status';
+
+    const fields = {
+      "Full Name": document.getElementById('fldName').value.trim(),
+      "Email": document.getElementById('fldEmail').value.trim(),
+      "Phone": document.getElementById('fldPhone').value.trim(),
+      "City": document.getElementById('fldCity').value.trim(),
+      "ZIP Code": document.getElementById('fldZip').value.trim(),
+      "Travel Radius": parseInt(document.getElementById('fldRadius').value) || null,
+      "Disciplines": Array.from(selectedDisciplines),
+      "Certifications": document.getElementById('fldCertifications').value.trim(),
+      "CPR / AED Status": selectedCprStatus,
+      "Years of Experience": parseInt(document.getElementById('fldExperience').value) || null,
+      "Preferred Rate": parseFloat(document.getElementById('fldRate').value) || null,
+      "Availability": document.getElementById('fldAvailability').value.trim(),
+      "Additional Information": document.getElementById('fldAdditional').value.trim(),
+      "Status": "New"
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    try {
+      const res = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ fields, typecast: true })
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err?.error?.message || `Request failed (${res.status})`);
+      }
+
+      formPanel.style.display = 'none';
+      successPanel.style.display = 'block';
+    } catch (err) {
+      statusEl.textContent = 'Something went wrong — please try again.';
+      statusEl.className = 'form-status error';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Application';
+      console.error(err);
+    }
+  });
+</script>
+</body>
+</html>

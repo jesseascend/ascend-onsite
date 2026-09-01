@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ascend On-Site Wellness — Partner With Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white: #FFFFFF;
+    --cream-bg: #F5F3F0;
+    --field-bg: #FAFAF9;
+    --field-border: #E5E5E5;
+    --ink: #000000;
+    --ink-secondary: #545454;
+    --light-blue: #BEDBF4;
+    --ascend-blue: #5FACF7;
+    --medium-blue: #1054AD;
+    --navy: #0C3974;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    font-family:'Manrope', sans-serif;
+    color:var(--ink-secondary);
+    background:var(--cream-bg);
+  }
+
+  /* --- Launcher (stand-in for wherever this lives on the page) --- */
+  .launcher-wrap{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+  }
+  .launcher-btn{
+    font-family:'Manrope', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.01em;
+    color:#fff;
+    background:var(--navy);
+    border:none;
+    border-radius:8px;
+    padding:16px 32px;
+    cursor:pointer;
+    transition:background 0.15s ease, transform 0.1s ease;
+  }
+  .launcher-btn:hover{ background:#082A5B; }
+  .launcher-btn:active{ transform:scale(0.98); }
+
+  /* --- Overlay + modal --- */
+  .overlay{
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.4);
+    display:none;
+    align-items:flex-start;
+    justify-content:center;
+    padding:5vh 16px;
+    overflow-y:auto;
+    z-index:1000;
+  }
+  .overlay.open{ display:flex; }
+
+  .modal{
+    background:var(--white);
+    width:100%;
+    max-width:680px;
+    border-radius:12px;
+    padding:48px 48px 40px;
+    position:relative;
+    box-shadow:0 20px 40px rgba(0,0,0,0.12);
+  }
+  @media (max-width:600px){
+    .modal{ padding:32px 24px 28px; border-radius:12px; }
+  }
+
+  .modal-close{
+    position:absolute;
+    top:20px; right:20px;
+    width:32px; height:32px;
+    border-radius:50%;
+    border:none;
+    background:transparent;
+    color:var(--ink-secondary);
+    font-size:20px;
+    line-height:1;
+    cursor:pointer;
+    transition:background 0.15s ease;
+  }
+  .modal-close:hover{ background:var(--light-blue); }
+
+  .modal-eyebrow{
+    font-size:12px;
+    color:var(--ascend-blue);
+    font-weight:600;
+    margin:0 0 8px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  .modal-title{
+    font-weight:700;
+    font-size:32px;
+    line-height:1.2;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  .modal-sub{
+    font-size:15px;
+    color:var(--ink-secondary);
+    margin:0 0 32px;
+    max-width:52ch;
+    line-height:1.6;
+  }
+
+  form{ display:flex; flex-direction:column; gap:24px; }
+
+  .row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  @media (max-width:560px){
+    .row{ grid-template-columns:1fr; }
+  }
+
+  label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:8px;
+    color:var(--ink);
+  }
+
+  input[type=text], input[type=email], input[type=tel], select, textarea{
+    width:100%;
+    font-family:'Manrope', sans-serif;
+    font-size:14px;
+    color:var(--ink);
+    background:var(--field-bg);
+    border:1px solid var(--field-border);
+    border-radius:8px;
+    padding:12px 14px;
+    outline:none;
+    transition:border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    appearance:none;
+  }
+  input::placeholder{ color:#AAAAAA; }
+  input:focus, select:focus, textarea:focus{
+    border-color:var(--ascend-blue);
+    background:var(--white);
+    box-shadow:0 0 0 3px rgba(95,172,247,0.1);
+  }
+
+  textarea{
+    resize:vertical;
+  }
+
+  select{
+    background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='%23545454' d='M5.5 7.5l4.5 5 4.5-5z'/%3e%3c/svg%3e");
+    background-repeat:no-repeat;
+    background-position:right 12px center;
+    padding-right:40px;
+  }
+  select:invalid{ color:#AAAAAA; }
+
+  .pill-group{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .pill{
+    font-family:'Manrope', sans-serif;
+    font-size:13px;
+    font-weight:500;
+    color:var(--ink-secondary);
+    background:var(--field-bg);
+    border:1px solid var(--field-border);
+    border-radius:20px;
+    padding:10px 16px;
+    cursor:pointer;
+    transition:all 0.12s ease;
+    user-select:none;
+  }
+  .pill:hover{
+    border-color:var(--ascend-blue);
+    background:rgba(95,172,247,0.05);
+  }
+  .pill.selected{
+    background:var(--ascend-blue);
+    border-color:var(--ascend-blue);
+    color:var(--white);
+  }
+
+  .submit-row{
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .submit-btn{
+    font-family:'Manrope', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    color:#fff;
+    background:var(--navy);
+    border:none;
+    border-radius:8px;
+    padding:14px 28px;
+    cursor:pointer;
+    transition:background 0.15s ease, opacity 0.15s ease;
+  }
+  .submit-btn:hover{ background:#082A5B; }
+  .submit-btn:disabled{ opacity:0.6; cursor:default; }
+
+  .form-status{
+    font-size:13px;
+    color:var(--ink-secondary);
+  }
+  .form-status.error{ color:#C84C31; }
+  .form-status.success{ color:var(--navy); font-weight:600; }
+
+  .success-panel{
+    text-align:center;
+    padding:24px 0 12px;
+  }
+  .success-panel h3{
+    font-size:28px;
+    font-weight:700;
+    margin:0 0 10px;
+    color:var(--ink);
+  }
+  .success-panel p{
+    color:var(--ink-secondary);
+    font-size:15px;
+    margin:0;
+    line-height:1.6;
+  }
+</style>
+</head>
+<body>
+
+  <div class="launcher-wrap">
+    <button class="launcher-btn" id="openModalBtn">Partner With Us</button>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <button class="modal-close" id="closeModalBtn" aria-label="Close">&times;</button>
+
+      <div id="formPanel">
+        <p class="modal-eyebrow">Ascend On-Site Wellness</p>
+        <h2 class="modal-title">Bring professional wellness to your community</h2>
+        <p class="modal-sub">We'll use this information to understand your needs and schedule a discovery call.</p>
+
+        <form id="leadForm">
+          <div class="row">
+            <div>
+              <label for="fldName">Name</label>
+              <input type="text" id="fldName" name="Name" required />
+            </div>
+            <div>
+              <label for="fldOrg">Organization</label>
+              <input type="text" id="fldOrg" name="Organization" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="fldTitle">Job title</label>
+              <input type="text" id="fldTitle" name="Job Title" />
+            </div>
+            <div>
+              <label for="fldEmail">Email</label>
+              <input type="email" id="fldEmail" name="Email" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="fldPhone">Phone</label>
+              <input type="tel" id="fldPhone" name="Phone" />
+            </div>
+            <div>
+              <label for="fldCity">City</label>
+              <input type="text" id="fldCity" name="City" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="fldOrgType">Organization type</label>
+              <select id="fldOrgType" name="Organization Type" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Residential Community (HOA / 55+ / Master-Planned)</option>
+                <option>Senior Living (Independent / Assisted / Memory Care)</option>
+                <option>Recreation & Membership Facility (Club / Resort / Community Center)</option>
+                <option>Hospitality (Resort / Hotel / Spa)</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="fldPop">Approximate population</label>
+              <input type="text" id="fldPop" name="Approximate Population" />
+            </div>
+          </div>
+
+          <div>
+            <label>Programming interests</label>
+            <div class="pill-group" id="pillGroup">
+              <button type="button" class="pill" data-value="Fitness">Fitness</button>
+              <button type="button" class="pill" data-value="Yoga">Yoga</button>
+              <button type="button" class="pill" data-value="Personal Training">Personal Training</button>
+              <button type="button" class="pill" data-value="Senior Strength">Senior Strength</button>
+              <button type="button" class="pill" data-value="Mobility">Mobility</button>
+              <button type="button" class="pill" data-value="Aqua Fitness">Aqua Fitness</button>
+              <button type="button" class="pill" data-value="Pilates">Pilates</button>
+              <button type="button" class="pill" data-value="Dance Fitness">Dance Fitness</button>
+              <button type="button" class="pill" data-value="Pickleball">Pickleball</button>
+              <button type="button" class="pill" data-value="Tennis">Tennis</button>
+              <button type="button" class="pill" data-value="Wellness Events">Wellness Events</button>
+              <button type="button" class="pill" data-value="Not Sure Yet">Not Sure Yet</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="fldExistingPrograms">Do you currently have wellness programming?</label>
+              <select id="fldExistingPrograms" name="Existing Programs">
+                <option value="" disabled selected>Select one</option>
+                <option>Yes, we have an established program</option>
+                <option>Yes, but it's limited or informal</option>
+                <option>No, we're looking to start</option>
+                <option>Unsure / In transition</option>
+              </select>
+            </div>
+            <div></div>
+          </div>
+
+          <div>
+            <label for="fldMessage">Anything else we should know?</label>
+            <textarea id="fldMessage" name="Message" rows="4"></textarea>
+          </div>
+
+          <div class="submit-row">
+            <button type="submit" class="submit-btn" id="submitBtn">Request a discovery call</button>
+            <span class="form-status" id="formStatus"></span>
+          </div>
+        </form>
+      </div>
+
+      <div class="success-panel" id="successPanel" style="display:none;">
+        <h3>Thanks — we'll be in touch</h3>
+        <p>We received your details and will reach out to schedule a discovery call shortly.</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // ------------------------------------------------------------------
+  // Airtable submission config
+  // ------------------------------------------------------------------
+  // Fill these in with your own values:
+  //   AIRTABLE_TOKEN: a Personal Access Token scoped to ONLY the
+  //     "On-Site" base, with ONLY data.records:write permission.
+  //     https://airtable.com/create/tokens
+  //   BASE_ID / TABLE_ID: already filled in below for the On-Site
+  //     base's Leads table.
+  const AIRTABLE_TOKEN = "PASTE_YOUR_SCOPED_AIRTABLE_TOKEN_HERE";
+  const BASE_ID = "app4rYzpkUqKmCpv9";
+  const TABLE_ID = "tbl8SVy8Qxy1pe8IS";
+
+  const overlay = document.getElementById('overlay');
+  const openBtn = document.getElementById('openModalBtn');
+  const closeBtn = document.getElementById('closeModalBtn');
+  const form = document.getElementById('leadForm');
+  const statusEl = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('submitBtn');
+  const formPanel = document.getElementById('formPanel');
+  const successPanel = document.getElementById('successPanel');
+  const pillGroup = document.getElementById('pillGroup');
+
+  const selectedInterests = new Set();
+
+  openBtn.addEventListener('click', () => overlay.classList.add('open'));
+  closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.classList.remove('open');
+  });
+
+  pillGroup.addEventListener('click', (e) => {
+    const pill = e.target.closest('.pill');
+    if (!pill) return;
+    const val = pill.dataset.value;
+    if (selectedInterests.has(val)) {
+      selectedInterests.delete(val);
+      pill.classList.remove('selected');
+    } else {
+      selectedInterests.add(val);
+      pill.classList.add('selected');
+    }
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.textContent = '';
+    statusEl.className = 'form-status';
+
+    const fields = {
+      "Name": document.getElementById('fldName').value.trim(),
+      "Organization": document.getElementById('fldOrg').value.trim(),
+      "Job Title": document.getElementById('fldTitle').value.trim(),
+      "Email": document.getElementById('fldEmail').value.trim(),
+      "Phone": document.getElementById('fldPhone').value.trim(),
+      "City": document.getElementById('fldCity').value.trim(),
+      "Organization Type": document.getElementById('fldOrgType').value,
+      "Approximate Population": document.getElementById('fldPop').value.trim(),
+      "Programming Interests": Array.from(selectedInterests),
+      "Existing Programs": document.getElementById('fldExistingPrograms').value,
+      "Message": document.getElementById('fldMessage').value.trim(),
+      "Status": "New"
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ fields, typecast: true })
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err?.error?.message || `Request failed (${res.status})`);
+      }
+
+      formPanel.style.display = 'none';
+      successPanel.style.display = 'block';
+    } catch (err) {
+      statusEl.textContent = 'Something went wrong — please try again.';
+      statusEl.className = 'form-status error';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Request a discovery call';
+      console.error(err);
+    }
+  });
+</script>
+</body>
+</html>
