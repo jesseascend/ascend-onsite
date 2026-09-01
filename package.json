@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
-    "start": "node dist/server/index.js",
+    "start": "node --input-type=module server-wrapper.js",
     "lint": "oxlint",
     "format": "oxfmt",
     "test": "node tests/check-site.mjs",
