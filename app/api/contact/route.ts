@@ -11,8 +11,6 @@ const FIELD_LABELS: Record<string, string> = {
   phone: 'Phone',
   city: 'City',
   organizationType: 'Organization type',
-  approximatePopulation: 'Approximate population',
-  frequency: 'Expected frequency',
   message: 'Message',
   yearsExperience: 'Years of experience',
   certifications: 'Certifications',
