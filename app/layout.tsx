@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   },
   description: 'Professionally managed on-site wellness programs for communities and facilities across Central Florida.',
   alternates: { canonical: '/' },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon.png', type: 'image/png', sizes: '1500x1500' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/icon.png',
+  },
   openGraph: {
     type: 'website',
     siteName: site.serviceName,

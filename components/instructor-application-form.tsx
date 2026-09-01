@@ -33,10 +33,10 @@ export function InstructorApplicationForm() {
       <div className="form-grid">
         <label><span>Name *</span><input name="name" type="text" autoComplete="name" required /></label>
         <label><span>Email *</span><input name="email" type="email" autoComplete="email" required /></label>
-        <label><span>Phone</span><input name="phone" type="tel" autoComplete="tel" /></label>
-        <label><span>City</span><input name="city" type="text" autoComplete="address-level2" /></label>
+        <label><span>Phone *</span><input name="phone" type="tel" autoComplete="tel" required /></label>
+        <label><span>City *</span><input name="city" type="text" autoComplete="address-level2" required /></label>
         <label><span>Years of experience</span><input name="yearsExperience" inputMode="numeric" /></label>
-        <label><span>Availability</span><select name="availability" defaultValue=""><option value="">Not sure yet</option><option>Weekdays</option><option>Weekends</option><option>Evenings</option><option>Flexible / open</option></select></label>
+        <label><span>Availability</span><input name="availability" type="text" placeholder="e.g. weekday mornings, flexible" /></label>
         <label className="form-wide"><span>Certifications</span><input name="certifications" type="text" placeholder="e.g. ACE, NASM, group fitness, aquatics" /></label>
         <label className="form-wide"><span>Tell us about your experience *</span><textarea name="message" rows={6} required placeholder="Populations you've worked with, class formats, and what draws you to on-site wellness." /></label>
       </div>

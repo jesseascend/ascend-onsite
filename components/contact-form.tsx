@@ -28,7 +28,7 @@ export function ContactForm() {
 
   return (
     <form className="contact-form" onSubmit={handleSubmit} noValidate={false}>
-      <div className="form-intro"><p className="eyebrow">Tell us about your environment</p><h2>Discovery Call request</h2><p>Fields marked with an asterisk are required.</p></div>
+      <div className="form-intro"><h2>Discovery Call request</h2></div>
       {status === 'error' && <div className="form-alert" role="alert" tabIndex={-1}><AlertCircle aria-hidden="true" /><div><strong>We couldn&rsquo;t send your request.</strong><p>{error}</p></div></div>}
       <div className="form-grid">
         <label><span>Name *</span><input name="name" type="text" autoComplete="name" required /></label>
@@ -37,7 +37,7 @@ export function ContactForm() {
         <label><span>Email *</span><input name="email" type="email" autoComplete="email" required /></label>
         <label><span>Phone</span><input name="phone" type="tel" autoComplete="tel" /></label>
         <label><span>City</span><input name="city" type="text" autoComplete="address-level2" /></label>
-        <label className="form-wide"><span>Organization type *</span><select name="organizationType" required defaultValue=""><option value="" disabled>Select one</option><option>Active Adult / 55+</option><option>Independent Living</option><option>Assisted Living</option><option>Senior Living</option><option>Luxury Residential Community</option><option>Master-Planned / HOA Community</option><option>Resort / Hotel</option><option>Other</option></select></label>
+        <label className="form-wide"><span>Organization type *</span><select name="organizationType" required defaultValue=""><option value="" disabled>Select one</option><option>Active Adult / 55+</option><option>Assisted Living / Memory Care</option><option>Hospitality</option></select></label>
         <label className="form-wide"><span>What would you like the wellness program to accomplish? *</span><textarea name="message" rows={6} required /></label>
       </div>
       <input type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="form-honeypot" />
