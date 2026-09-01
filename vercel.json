@@ -1,7 +1,6 @@
 {
   "version": 2,
   "buildCommand": "npm run build",
-  "startCommand": "node --input-type=module server-wrapper.js",
   "env": {
     "NODE_ENV": "production"
   }
