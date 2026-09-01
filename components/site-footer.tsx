@@ -21,10 +21,11 @@ export function SiteFooter() {
             <li><a href="/about/">About Ascend</a></li>
           </ul>
         </nav>
-        <div>
+        <div className="footer-service-area">
           <h2 className="footer-heading">Service area</h2>
           <p>{site.serviceRegion}</p>
           <p className="footer-small">Seminole, Orange, Volusia, Lake, and Osceola counties.</p>
+          <a href="/instructor-application/">Instructor Application</a>
         </div>
       </div>
       <div className="shell footer-bottom">

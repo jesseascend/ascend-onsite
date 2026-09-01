@@ -15,6 +15,9 @@
   "cache": {
     "enabled": true
   },
+  "send_email": [
+    { "name": "EMAIL" }
+  ],
   "routes": [
     { "pattern": "ascendonsite.com", "custom_domain": true },
     { "pattern": "www.ascendonsite.com", "custom_domain": true }
